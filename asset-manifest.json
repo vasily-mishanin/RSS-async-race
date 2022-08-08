@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/RSS-async-race/static/css/main.e1621372.css",
+    "main.js": "/RSS-async-race/static/js/main.be75c2a8.js",
+    "index.html": "/RSS-async-race/index.html",
+    "main.e1621372.css.map": "/RSS-async-race/static/css/main.e1621372.css.map",
+    "main.be75c2a8.js.map": "/RSS-async-race/static/js/main.be75c2a8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e1621372.css",
+    "static/js/main.be75c2a8.js"
+  ]
+}
