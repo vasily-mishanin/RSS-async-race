@@ -1,0 +1,87 @@
+.carItem {
+  margin-bottom: 1rem;
+  width: 90%;
+  border: 1px solid black;
+}
+
+.carControlsSelect {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.carName {
+  margin-left: 1rem;
+  color: lightcyan;
+}
+
+.carControlsGo {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.track {
+  position: relative;
+  flex-grow: 1;
+  background-color: black;
+  width: auto;
+  overflow: hidden;
+  margin-left: 0.2rem;
+}
+
+.trackInner {
+  width: 100%;
+  /* border: 5px solid green; */
+}
+
+.carImage {
+  width: 3rem;
+  height: 1.5rem;
+  fill: green;
+}
+
+.finish {
+  position: absolute;
+  width: 3rem;
+  height: 1.5rem;
+  border-left: 4px dotted yellow;
+  top: 0;
+  right: 0.5rem;
+}
+
+.backShift {
+  animation-name: car-back;
+  /* animation-duration: 5s; */
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.drive {
+  animation-name: driving;
+  /* animation-duration: 5s; */
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes driving {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes car-back {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

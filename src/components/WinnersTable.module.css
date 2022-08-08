@@ -1,0 +1,40 @@
+.sortBadge {
+  background-color: salmon;
+  border-radius: 0.25rem;
+}
+
+.carImage {
+  width: 3rem;
+  height: 1.5rem;
+  fill: green;
+}
+
+.name {
+  width: 15rem;
+}
+
+.wins {
+  width: 5rem;
+}
+
+.time {
+  width: 10rem;
+}
+
+table {
+  border-spacing: 5px;
+  margin-bottom: 2rem;
+}
+
+thead {
+  background-color: gray;
+}
+
+th {
+  padding: 0.25rem;
+}
+td {
+  text-align: center;
+  background-color: lightgray;
+  padding: 0.25rem;
+}

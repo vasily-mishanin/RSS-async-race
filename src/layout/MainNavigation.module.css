@@ -1,0 +1,28 @@
+.mainNavigation {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.mainNavigation li,
+.mainNavigation a {
+  text-decoration: none;
+}
+
+.mainNavigation li + li {
+  margin-left: 1rem;
+}
+
+.mainNavigation li {
+  padding: 0.25rem 0.5rem;
+  background-color: lemonchiffon;
+}
+
+.mainNavigation li:hover {
+  cursor: pointer;
+  background-color: salmon;
+}
+
+.mainNavigation a:active {
+  background-color: burlywood;
+  color: white;
+}

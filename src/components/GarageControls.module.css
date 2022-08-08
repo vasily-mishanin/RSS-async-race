@@ -1,0 +1,14 @@
+.garageControls {
+  margin-bottom: 2rem;
+}
+
+.garageControls input[type='text'] {
+  height: 1.5rem;
+}
+
+.garageControls form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
