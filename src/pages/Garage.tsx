@@ -15,7 +15,7 @@ type TGarageProps = {
 };
 
 const Garage: React.FC<TGarageProps> = (props) => {
-  console.log('GARAGE');
+  //console.log('GARAGE');
   const [cars, setCars] = useState<Car[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [updatingCar, setUpdatingCar] = useState<Car>(props.updatingCar);
@@ -25,19 +25,18 @@ const Garage: React.FC<TGarageProps> = (props) => {
 
   const CARS_PER_PAGE = 7;
   const book = paginate<Car>(cars, CARS_PER_PAGE);
-  console.log(book);
+  //console.log(book);
   const numberOfPages = book.length;
   const currentPage = book[pageNumber - 1];
   //let stoppedCars = 0;
 
   useEffect(() => {
-    console.log('USE EFFECT');
+    //console.log('USE EFFECT');
     setIsLoading(true);
     // getCars
     fetch('http://127.0.0.1:3000/garage')
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setCars(() => res);
         setIsLoading(false);
       });
@@ -48,7 +47,6 @@ const Garage: React.FC<TGarageProps> = (props) => {
       .createCar(name, color)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setCars((prevCars) => [...prevCars, res]);
       });
   };
@@ -57,7 +55,6 @@ const Garage: React.FC<TGarageProps> = (props) => {
     api
       .deleteCar(id)
       .then((res) => {
-        console.log(res.status);
         if (res.status === 200) {
           setCars((prevCars) => prevCars.filter((car) => car.id !== id));
           api.deleteWinner(id);
@@ -71,7 +68,6 @@ const Garage: React.FC<TGarageProps> = (props) => {
 
   const selectCarHandler = (car: Car) => {
     console.log('SELECT', car);
-    console.log(car);
     props.handleUpdatingCarChange(car);
     setUpdatingCar(car);
   };
@@ -105,7 +101,7 @@ const Garage: React.FC<TGarageProps> = (props) => {
     }
     Promise.all(generatedCars.map((car) => api.createCar(car.name, car.color).then((res) => res.json()))).then(
       (responses: Car[]) => {
-        console.log(responses);
+        //console.log(responses);
         setCars((prevCars) => [...prevCars, ...responses]);
       }
     );

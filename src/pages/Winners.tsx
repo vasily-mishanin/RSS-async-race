@@ -10,7 +10,7 @@ type TSortConfig = {
 } | null;
 
 const Winners: React.FC = (props) => {
-  console.log('Winners');
+  //console.log('Winners');
   const [isLoading, setIsLoading] = useState(false);
   const [winners, setWinners] = useState<Winner[]>([]);
   const [cars, setCars] = useState<Car[]>([]);
@@ -23,7 +23,7 @@ const Winners: React.FC = (props) => {
   useEffect(() => {
     setIsLoading(true);
     // winners --> setState -> cars -> setState
-    console.log('useEffect - Winners');
+    //console.log('useEffect - Winners');
     api
       .getWinners(currentPageNumber, LIMIT, sortConfig?.key, sortConfig?.order)
       .then((res) => {

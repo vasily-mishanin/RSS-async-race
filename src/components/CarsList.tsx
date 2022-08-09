@@ -12,7 +12,6 @@ interface TCarListProps {
 }
 
 const CarsList: React.FC<TCarListProps> = (props) => {
-  console.log('CARS LIST');
   const racers: Racer[] = [];
 
   const processRacer = (racer: Racer) => {
@@ -20,9 +19,9 @@ const CarsList: React.FC<TCarListProps> = (props) => {
     if (racers.length === props.items.length) {
       props.signalRaceEnded();
       const successfulRacers = racers.filter((racer) => racer.success);
-      console.log(successfulRacers);
+      //console.log(successfulRacers);
       const bestRacer = successfulRacers.reduce((curr, acc) => (curr.time < acc.time ? curr : acc));
-      console.log(bestRacer);
+      //console.log(bestRacer);
       const winner = new Winner(bestRacer.id, 1, bestRacer.time);
       console.log('WINNER', winner);
       // check if such winner exists

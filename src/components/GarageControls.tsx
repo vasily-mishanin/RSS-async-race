@@ -15,14 +15,10 @@ interface IGarageControlsProps {
 }
 
 const GarageControls: React.FC<IGarageControlsProps> = (props) => {
-  console.log('GarageControls');
-  console.log(props.updatingCar);
   const [updatingCar, setUpdatingCar] = useState<Car>(props.updatingCar);
   const [isRaceStarted, setIsRaceStarted] = useState(false);
-  console.log(updatingCar);
 
   useEffect(() => {
-    console.log('USE EFFECT GarageControls');
     setUpdatingCar(() => props.updatingCar);
   }, [props.updatingCar]);
 
@@ -35,8 +31,6 @@ const GarageControls: React.FC<IGarageControlsProps> = (props) => {
 
   const handleCreateSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('onCreate');
-    console.log(createCarInputNameRef.current?.value, createCarInputColorRef.current?.value);
     props.createCarHandler(createCarInputNameRef.current!.value, createCarInputColorRef.current!.value);
     createCarFormRef.current?.reset();
   };

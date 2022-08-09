@@ -15,10 +15,12 @@
 
 .wins {
   width: 5rem;
+  cursor: pointer;
 }
 
 .time {
   width: 10rem;
+  cursor: pointer;
 }
 
 table {

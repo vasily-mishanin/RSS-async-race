@@ -1,3 +1,5 @@
+import classes from './PaginationControls.module.css';
+
 type TCarsControlsProps = {
   onNext: () => void;
   onPrev: () => void;
@@ -10,7 +12,7 @@ const CarsListControls: React.FC<TCarsControlsProps> = (props) => {
   const isFirstPage = props.currentPageNumber === 1;
 
   return (
-    <div>
+    <div className={classes.paginationControls}>
       <button disabled={isFirstPage ? true : false} onClick={props.onPrev}>
         Prev
       </button>
