@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import WinnerMessage from '../components/WinnerMessage';
 import CarsList from '../components/CarsList';
 import PaginationControls from '../components/PaginationControls';
 import GarageControls from '../components/GarageControls';
 import Car from '../model/Car';
+import { Racer } from '../model/Car';
 import { carBrand, carModel } from '../model/carsData';
 import { paginate } from '../utilites/helpers';
 import * as api from '../api-fetch/requests';
@@ -22,6 +24,7 @@ const Garage: React.FC<TGarageProps> = (props) => {
   const [pageNumber, setPageNumber] = useState<number>(props.page);
   const [isRaceStarted, setIsRaceStarted] = useState(false);
   const [isRaceEnded, setIsRaceEnded] = useState(false);
+  const [racer, setRacer] = useState<Racer | null>(null);
 
   const CARS_PER_PAGE = 7;
   const book = paginate<Car>(cars, CARS_PER_PAGE);
@@ -123,6 +126,7 @@ const Garage: React.FC<TGarageProps> = (props) => {
 
   const startRaceHandler = () => {
     setIsRaceStarted(true);
+    setRacer(null);
   };
 
   const resetRaceHandler = () => {
@@ -131,7 +135,14 @@ const Garage: React.FC<TGarageProps> = (props) => {
   };
 
   const raceEndHandler = () => {
+    console.log('raceEndHandler');
     setIsRaceEnded(true);
+    //setIsRaceStarted(false);
+    //setRacer(racer);
+  };
+
+  const resetRaceEnded = () => {
+    setIsRaceEnded(false);
   };
 
   if (isLoading) {
@@ -144,6 +155,7 @@ const Garage: React.FC<TGarageProps> = (props) => {
 
   return (
     <section>
+      <WinnerMessage racer={racer} />
       <GarageControls
         updatingCar={updatingCar}
         createCarHandler={createCarHandler}
@@ -153,6 +165,7 @@ const Garage: React.FC<TGarageProps> = (props) => {
         onStartRace={startRaceHandler}
         onResetRace={resetRaceHandler}
         isRaceEnded={isRaceEnded}
+        resetRaceEnded={resetRaceEnded}
       />
       <h2>Garage: {cars.length}</h2>
       <h3>Page: {pageNumber}</h3>
@@ -162,6 +175,7 @@ const Garage: React.FC<TGarageProps> = (props) => {
         removeCarHandler={removeCarHandler}
         selectCarHandler={selectCarHandler}
         signalRaceEnded={raceEndHandler}
+        signalWinner={(racer) => setRacer(racer)}
       />
       <PaginationControls numberOfPages={numberOfPages} currentPageNumber={pageNumber} onNext={handleNext} onPrev={handlePrev} />
     </section>

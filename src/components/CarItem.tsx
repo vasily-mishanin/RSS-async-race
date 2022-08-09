@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import Car from '../model/Car';
 import classes from './CarItem.module.css';
-import * as requests from '../api-fetch/requests';
+import * as api from '../api-fetch/requests';
 import { Racer } from '../model/Car';
 
 interface TCarItemProps {
@@ -13,18 +13,19 @@ interface TCarItemProps {
 }
 
 const CarItem: React.FC<TCarItemProps> = (props) => {
+  //console.log('ITEM', props.isRaceStarted);
   const [isDriving, setIsDriving] = useState(false);
   const [drivingTime, setDrivingTime] = useState(0);
   const [isCarBroken, setIsCarBroken] = useState(false);
   const [isCarFinished, setIsCarFinished] = useState(false);
   const isMounted = useRef(false);
 
-  const { item } = props;
+  const { id: carId } = props.item;
 
   const onGo = useCallback(() => {
     let time: number = 0;
-    requests
-      .startCarEngine(`${item.id}`)
+    api
+      .startCarEngine(`${carId}`)
       .then((res) => res.json())
       .then((res) => {
         time = res.distance / res.velocity;
@@ -32,8 +33,8 @@ const CarItem: React.FC<TCarItemProps> = (props) => {
         //console.log('Animation...');
         setIsDriving(true);
         setDrivingTime(time);
-        requests
-          .startDrive(`${item.id}`)
+        api
+          .startDrive(`${carId}`)
           .then((res) => {
             if (res.status === 500) {
               //console.log('broken');
@@ -46,27 +47,29 @@ const CarItem: React.FC<TCarItemProps> = (props) => {
           })
           .catch((error) => {
             // setIsCarBroken(true);
-            console.log(error);
+            //console.log(error);
             return;
           })
           .then((res) => {
-            requests.stopCarEngine(`${item.id}`).then(() => {
-              setIsCarFinished(true);
-              //console.log('Result Race: ' + time, res);
+            api.stopCarEngine(`${carId}`).then(() => {
               const success = res ? res.success : false;
               const { id, name, color } = props.item;
               const racer = new Racer(id, name, color, time, success);
-              props.dispatchRacer(racer);
+              //console.log('onGo', props.isRaceStarted);
+
+              if (props.isRaceStarted) {
+                props.dispatchRacer(racer);
+              }
+              setIsCarFinished(true);
             });
-            //onDrivingSignal(false);
           });
       });
-  }, [item]);
+  }, [carId, props.isRaceStarted]);
 
   useEffect(() => {
     if (isMounted.current) {
-      if (props.isRaceStarted) {
-        //console.log('EFFECT RACE');
+      if (props.isRaceStarted === true) {
+        // console.log('EFFECT RACE');
         onGo();
       } else {
         onBack();

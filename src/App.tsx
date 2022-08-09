@@ -23,7 +23,12 @@ function App() {
         <Route
           path='/garage'
           element={
-            <Garage page={lastPage} handleLastPage={handleLastPage} updatingCar={updatingCar} handleUpdatingCarChange={handleUpdatingCarChange} />
+            <Garage
+              page={lastPage}
+              handleLastPage={handleLastPage}
+              updatingCar={updatingCar}
+              handleUpdatingCarChange={handleUpdatingCarChange}
+            />
           }
         ></Route>
         <Route path='/winners' element={<Winners />}></Route>

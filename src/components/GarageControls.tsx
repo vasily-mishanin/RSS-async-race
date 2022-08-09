@@ -1,7 +1,6 @@
 import classes from './GarageControls.module.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Car from '../model/Car';
-//import { ControlsContext } from '../store/controls-context';
 
 interface IGarageControlsProps {
   updatingCar: Car;
@@ -12,9 +11,11 @@ interface IGarageControlsProps {
   onStartRace: () => void;
   onResetRace: () => void;
   isRaceEnded: boolean;
+  resetRaceEnded: () => void;
 }
 
 const GarageControls: React.FC<IGarageControlsProps> = (props) => {
+  //console.log('GarageControls', props.isRaceEnded);
   const [updatingCar, setUpdatingCar] = useState<Car>(props.updatingCar);
   const [isRaceStarted, setIsRaceStarted] = useState(false);
 
@@ -65,6 +66,7 @@ const GarageControls: React.FC<IGarageControlsProps> = (props) => {
 
   const handleReset = () => {
     setIsRaceStarted(false);
+    props.resetRaceEnded();
     props.onResetRace();
   };
 
