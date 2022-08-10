@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/RSS-async-race/static/css/main.5d56ede8.css",
-    "main.js": "/RSS-async-race/static/js/main.6c9352ef.js",
+    "main.js": "/RSS-async-race/static/js/main.1ef53f8c.js",
     "index.html": "/RSS-async-race/index.html",
     "main.5d56ede8.css.map": "/RSS-async-race/static/css/main.5d56ede8.css.map",
-    "main.6c9352ef.js.map": "/RSS-async-race/static/js/main.6c9352ef.js.map"
+    "main.1ef53f8c.js.map": "/RSS-async-race/static/js/main.1ef53f8c.js.map"
   },
   "entrypoints": [
     "static/css/main.5d56ede8.css",
-    "static/js/main.6c9352ef.js"
+    "static/js/main.1ef53f8c.js"
   ]
 }
