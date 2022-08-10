@@ -18,7 +18,7 @@ const Winners: React.FC = (props) => {
   const [sortConfig, setSortConfig] = useState<TSortConfig>(null);
   const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const LIMIT = 10;
-  const numberOfPages = totalWinners / LIMIT;
+  const numberOfPages = Math.ceil(totalWinners / LIMIT);
 
   useEffect(() => {
     setIsLoading(true);
