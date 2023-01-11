@@ -15,6 +15,7 @@ type TWinnerView = {
   time: number;
 };
 
+//TODO interface ?
 type TWinnersTableProps = {
   winners: Winner[];
   cars: Car[];

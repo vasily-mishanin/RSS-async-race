@@ -155,7 +155,8 @@ const Garage: React.FC<TGarageProps> = (props) => {
 
   return (
     <section>
-      <WinnerMessage racer={racer} />
+      {/* //TODO conditional */}
+      {racer && <WinnerMessage racer={racer} />}
       <GarageControls
         updatingCar={updatingCar}
         createCarHandler={createCarHandler}

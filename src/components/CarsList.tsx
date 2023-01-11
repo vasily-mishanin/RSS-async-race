@@ -14,7 +14,7 @@ interface TCarListProps {
 
 const CarsList: React.FC<TCarListProps> = (props) => {
   //console.log('CARLIST', props.isRaceStarted);
-
+  //TODO state?
   const racers: Racer[] = [];
   let isFirst: boolean = true;
 
